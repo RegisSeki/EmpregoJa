@@ -1,7 +1,7 @@
 
 
 <%= form_for @job do |f| %>
-<h1><%= f.label :title, "Título" %>
+<%= f.label :title, "Título" %>
 <%= f.text_field :title %></h1>
 <%= f.label :location, "Local" %>
 <%= f.text_field :location %>
@@ -11,7 +11,8 @@
 <%= f.text_field :company %>
 <%= f.label :description, "Descrição" %>
 <%= f.text_field :description %>
-
+<%= f.check_box(:featured) %>
+<%= f.label(:featured, "Destaque") %>
 <%= f.submit "Criar Vaga" %>
 
 <% end %>
