@@ -1,0 +1,6 @@
+<h1><%= @category.name %></h1>
+
+<% if @category.jobs.empty? %>
+  Nenhuma vaga disponível
+<% end %>
+<%= render @category.jobs %>
