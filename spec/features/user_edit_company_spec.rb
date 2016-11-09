@@ -23,5 +23,19 @@ feature 'User edit company' do
     expect(page).to have_content '5555-5555'
   end
 
+  scenario 'with valid data' do
+    company = Company.create(name: 'Campus Code',
+                             location: 'São Paulo',
+                             mail: 'contato@campus.com.br',
+                             phone: '2369-3476')
 
+    visit edit_company_path(company)
+
+    fill_in 'Nome', with: ''
+    fill_in 'Email', with: ''
+
+    click_on 'Atualizar'
+
+    expect(page).to have_content 'Não foi possível atualizar a empresa'
+  end
 end

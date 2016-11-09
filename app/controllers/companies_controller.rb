@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.create(category_params)
+    @company = Company.create(company_params)
     redirect_to company_url(@company)
   end
 
@@ -17,9 +17,14 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company.update(category_params)
+    success = @company.update(company_params)
 
-    redirect_to @company
+    if success
+      redirect_to @company
+    else
+      flash[:error] = "Não foi possível atualizar a empresa"
+      render :edit
+    end
   end
 
   private
@@ -28,7 +33,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
   end
 
-  def category_params
+  def company_params
     params.require(:company)
           .permit(:name, :location, :mail, :phone)
   end
