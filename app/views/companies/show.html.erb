@@ -10,3 +10,7 @@
   <%= job.title %>
   <%= job.category.name %>
 <% end %>
+
+<% if @company.premium? %>
+  <%= image_tag("estrela.png") %>
+<% end %>
