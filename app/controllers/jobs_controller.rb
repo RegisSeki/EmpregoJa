@@ -23,8 +23,7 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
-    @job.update(jobs_params)
-    if @job.save
+    if @job.update(jobs_params)
       redirect_to job_url(@job)
     else
       flash[:error] = "Não foi possível atualizar a vaga"
