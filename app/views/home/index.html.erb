@@ -1,14 +1,17 @@
 <h1>Emprego Já</h1>
 
-<% @jobs.each do |job| %>
-  <h1><%= link_to job.title, job_path(job.id) %></h1>
-  <p><%= job.category.name %></p>
-  <p><%= job.company.name %></p>
-  <p><%= job.location %></p>
-  <% if  job.featured? %>
-  <strong>Destaque</strong>
+
+  <% @jobs.each do |job| %>
+    <% unless job.expired? %>
+      <h1><%= link_to job.title, job_path(job.id) %></h1>
+      <p><%= job.category.name %></p>
+      <p><%= job.company.name %></p>
+      <p><%= job.location %></p>
+      <% if  job.featured? %>
+        <strong>Destaque</strong>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
 
   <% @companies.each do |company| %>
     <h1><%= link_to company.name, company %></h1>

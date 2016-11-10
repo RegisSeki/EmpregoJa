@@ -1,3 +1,7 @@
+<% if @job.expired? %>
+Vaga Expirada
+<% end %> 
+
 <h1><%= @job.title %></h1>
 <%= @job.location %>
 <%= @job.category.name %>
